@@ -27,21 +27,18 @@ The CM_Report will be structured as follow:
 ELM Description
 
     1.1. ELM how it works       
-        &nbsp;&nbsp;  1.1.1.  Norm 1  
-        &nbsp;&nbsp;  1.1.2. Norm 2 + reg  
-        &nbsp;&nbsp; 1.1.3.  Iterative Least Sqaure [REG][GMRES]  
 
-    1.2. Optimization Models
-[look paper]
+    1.2. Iterative Least Sqaure [REG][GMRES]  
 
-2. Numerical Analysis
-study of 1.1.3 it minimizable and how
+    1.3. Optimization Models
+
+2. Numerical Analysis study of 1.2 
 
 3. Optimization
 
-    3.1. Deflected
+    3.1. Deflected subgrandient method
  
-    3.2. Smoothed
+    3.2. Smoothed grandient method
 
 4. Implementation
 
@@ -67,7 +64,7 @@ To install the Julia Programming Language:
 
 OR  
 
-- head to <a href="https://github.com/JuliaLang/julia"> Julia GitHub </a> and follow the instructions to clone the project.
+- head to <a href="https://github.com/JuliaLang/julia"> Julia GitHub, to get the latest version, </a> and follow the instructions to clone the project.
 
 <font size = 1.5> *If you have any problems using the Julia Programming Language, check the <a href="https://docs.julialang.org/en/v1/ "> Julia Documentation  </a>* </font>
 </p>
@@ -88,7 +85,7 @@ First, make sure you have all the required libraries installed. Then, clone this
 
 ## Contact information
 
-If you have any problems to instal this repository or need any clarification on the code please contact us. 
+If you have any problems to instal this repository or need any clarification on the code please contact us at: 
 
 |Author             |University Mail                    | Personal Mail             | Github                                                   |
 |-------------------|-----------------------------------|---------------------------|----------------------------------------------------------|
