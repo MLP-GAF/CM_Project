@@ -1,6 +1,9 @@
 using LinearAlgebra
 import LinearAlgebra.Eigen
 
+#this lib will be used to estimate the executon time
+using BenchmarkTools
+
 function svdCm(A)
 
    #Where A is the real m x n matrix that we wish to decompose 
@@ -66,15 +69,14 @@ PP=[1. 2.; 3. 4.]
 B = [3 2 2; 2 3 -2]
 C = [0.8147 0.6324 0.9575; 0.9058 0.0975 0.9649; 0.1270 0.2785 0.1576; 0.9134 0.5469 0.9706] 
 
-MM = [1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0]
+MM = [1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0;1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0;1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0 ]
 
-#=
-SVD = svd(B)
-println("SVD")
-display(SVD)
-=#
+#println("Julia SVD time:")
+#SVD = @btime svd(B)
+#display(SVD)
 
-U, S, V = svdCm(B)
+println("SVD time:")
+U, S, V = @btime svdCm(B)
 
 #=
 println("U")

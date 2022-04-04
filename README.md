@@ -69,6 +69,17 @@ OR
 <font size = 1.5> *If you have any problems using the Julia Programming Language, check the <a href="https://docs.julialang.org/en/v1/ "> Julia Documentation  </a>* </font>
 </p>
 
+### Julia BenchmarkTools
+
+<p>
+BenchmarkTools is a <a href="https://julialang.org"> Julia Language </a> package. 
+To install BenchmarkTools, please <a href="https://docs.julialang.org/en/v1/manual/getting-started/">open    Julia's interactive session (known as REPL)</a> and press <kbd>]</kbd> key in the REPL to use the package mode, then type the following command
+</p>
+
+    pkg> add BenchmarkTools
+
+To know more about the BenchmarkTools, head to the <a href="https://github.com/JuliaCI/BenchmarkTools.jl"> BenchmarkTools Github </a> for more documentation.
+
 ### Build this repository 
 First, make sure you have all the required libraries installed. Then, clone this git repository:
 
