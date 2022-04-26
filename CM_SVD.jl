@@ -4,6 +4,8 @@ import LinearAlgebra.Eigen
 #this lib will be used to estimate the executon time
 using BenchmarkTools
 
+using Distributions
+
 function svdCm(A)
 
    #Where A is the real m x n matrix that we wish to decompose 
@@ -14,10 +16,11 @@ function svdCm(A)
   shortSize = min(n,m)
   longSize = max(n,m)
 
-  #Asq = fill(0., (longSize,longSize))
+  Asq = fill(0., (shortSize,shortSize))
   #we need to calulate eigen values so we square the matrix
-  #mul!(Asq, A', A) 
-  Asq = A' * A
+  mul!(Asq, A', A)
+  
+  #Asq = A' * A
   #display(Asq)
 
   # V is equal to the eigenvectors of the eigenvalues of A
@@ -38,11 +41,6 @@ function svdCm(A)
       S[i,i] = sqrt(Complex(a[i])) 
       
       Sin[i,i] = 1/sqrt(Complex(a[i]))    
-        
-    else
-      S[i,i] = 0
-      
-      Sin[i,i] = 0
       
     end 
 
@@ -89,9 +87,10 @@ M = [4. 0.; 3. -5.]
 D = [-4. -17.; 2. 2.]
 PP=[1. 2.; 3. 4.]
 B = [3 2 2 1 2 3; 2 3 -2 1 2 3]
-C = [0.8147 0.6324 0.9575; 0.9058 0.0975 0.9649; 0.1270 0.2785 0.1576; 0.9134 0.5469 0.9706] 
+C = rand(Uniform(1., 100.), 100,10)
 
 MM = [1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0;1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0;1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0 ]
+
 
 println("Julia SVD time:")
 SVD = @btime svd(C)
