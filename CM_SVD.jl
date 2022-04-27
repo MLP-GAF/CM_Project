@@ -1,9 +1,9 @@
 using LinearAlgebra
 import LinearAlgebra.Eigen
-
+using SparseArrays
 #this lib will be used to estimate the executon time
 using BenchmarkTools
-
+using Test
 using Distributions
 
 function svdCm(A)
@@ -12,42 +12,42 @@ function svdCm(A)
    # U is an m x m matrix, 
    # S is an m x n diagonal matrix,  
    # V^T is the  transpose of an n x n matrix where T is a superscript.
-  n,m = size(A)
-  shortSize = min(n,m)
-  longSize = max(n,m)
+#   println("1")
+  #@time begin
+   
+    r,c = size(A)
+    shorter=min(r,c)
+    longer=max(r,c)
+  #end
 
-  Asq = fill(0., (shortSize,shortSize))
-  #we need to calulate eigen values so we square the matrix
+ # println("2")
+  #@time begin
+    #we need to calulate eigen values so we square the matrix
+  Asq = fill(0., (shorter,shorter))
   mul!(Asq, A', A)
-  
-  #Asq = A' * A
-  #display(Asq)
+  #end
 
-  # V is equal to the eigenvectors of the eigenvalues of A
-  a = eigvals(Asq) #1.930 ms
-  V = eigvecs(Asq) #4.857 ms
+ # println("3")
+ # @time begin
+ 
+  a, V = eigen!(Asq)
+  #end
   # To calculate the SVD we need to sort the matrix V and the eigenvalues in a decresing order
-  V, a = sortByArray(V, a) #746.018 ns
-
+  #V, a = sortByArray(V, a) #746.018 ns 
   
   #Builiding the S matrix as a diagonal matrix with the eigenvalues decresly orered on the diagonal
-  S = fill(0., (n,m))
-  Sin = fill(0., (shortSize,longSize))
 
-  i=1
-  while i<= shortSize
+  
 
-    if (a[i]>1e-6)
-      S[i,i] = sqrt(Complex(a[i])) 
-      
-      Sin[i,i] = 1/sqrt(Complex(a[i]))    
-      
-    end 
+  S = sparse(fill(0., (longer,shorter)))
+  Sin = sparse(fill(0., (shorter,longer)))
+#println("4")
+ # @time begin
+  
 
-    i+=1
-  end
-
-  #println("sin size ", size(Sin))
+ S[diagind(S)] .= (sqrt.(a))
+ Sin[diagind(Sin)] .= 1 ./ S[diagind(S)]
+#end
   #=
   we know that 
   A = U S V'
@@ -55,18 +55,21 @@ function svdCm(A)
   U = (A V)/S 
   =#
 
-  #Folowing two lines 22.900 ms
-  U1 = fill(0., size(A))
+  U1 = fill(0., (r,c))
+
+ #println("5")
+  #@time begin
   mul!(U1, A, V)
-
-  if (n<m)
-    U = U1 / S 
-  else
-    #U = U1 / S 
-    U = fill(0., (longSize,longSize))
-    mul!(U,U1,Sin)
-  end
-
+  #end
+ #println("6")
+  U = fill(0., (longer,longer))
+ # println(size(U1))
+ # println(size(Sin))
+#@time begin
+    #e' una moltiplicazione tra riga e un elemento nella diagonale
+   mul!(U,U1,Sin) #sostituire con una for
+  
+#end
   return U, S, V
 end
 
@@ -83,32 +86,30 @@ function sortByArray(M, array, decres = true)
   return V, sortedArray
 end
 
-M = [4. 0.; 3. -5.]
-D = [-4. -17.; 2. 2.]
-PP=[1. 2.; 3. 4.]
-B = [3 2 2 1 2 3; 2 3 -2 1 2 3]
-C = rand(Uniform(1., 100.), 100,10)
 
+R = rand(Uniform(1., 100.), 10000,1000)
 MM = [1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0;1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0;1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0 ]
 
-
+C = R
+println("size of matrix: ", size(C) )
 println("Julia SVD time:")
-SVD = @btime svd(C)
+SVD = @time svd(C)
 #display(SVD)
 
 println("SVD time:")
-U, S, V = @btime svdCm(C)
-println("U", size(U))
-println("S", size(S))
-println("V", size(V))
+U, S, V =  @time svdCm(C)
 
 F = U * S * V'
-display(F)
+#display(F)
+@test F ≈ C atol=1e-5
+
 #=
-println("U")
+println("U", size(U))
 display(U)
-println("S")
+
+println("S", size(S))
 display(S)
-println("V")
+
+#println("V", size(V))
 display(V)
 =#
