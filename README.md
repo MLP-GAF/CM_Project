@@ -16,7 +16,8 @@
 
 ---
 ## Abstract
-This github repository ha been created to develop the project for the 'Computational Mathematics for Learning and Data Analysis' exam 2021/2022 from the master's degree in Computer Science and Artificial Intelligence from the University of Pisa.  
+This github repository ha been created to develop the project for the 'Computational Mathematics for Learning and Data Analysis' exam 2021/2022 from the master's degree in Computer Science and Artificial Intelligence from the University of Pisa.
+The aim of this project is to evaluate different optimization methods for learning in ELM (Extreme Learning Machines).  
 A full explanation of the mathematical content and decision making gone behind this project can be found in the report: CM_Report
 
 The CM_Report will be structured as follow:
@@ -24,30 +25,42 @@ The CM_Report will be structured as follow:
 <font size = 2>
 
 1. Intro
-ELM Description
 
-    1.1. ELM how it works       
+    1.1. ELM   
 
-    1.2. Iterative Least Sqaure [REG][GMRES]  
+    1.2. ELM learning 
 
-    1.3. Optimization Models
+    1.3. Iterative Re-weighted Least Squared Problem
 
-2. Numerical Analysis study of 1.2 
+    1.4. Optimization Problem
 
-3. Optimization
+2. Numerical Analysis study of 1.3 
 
-    3.1. Deflected subgrandient method
- 
-    3.2. Smoothed grandient method
+3. Direct method resolution
 
-4. Implementation
+    3.1. SVD decomposition
 
-5. Conclusion
+    3.2. Solving LS with SVD
+
+    3.3. Analysis on SVD decomposition
+
+    3.4. Conditioning and stability
+
+    3.5. Backward stability    
+
+4. Optimization
+
+    4.1. Deflected subgrandient method
+
+    4.2. Smoothed gradient method
+
+5. Implementation
+6. Conclusions
 
 <font>
 
 --- 
-
+# The project
 <p>
 
 ## Quick start: 
