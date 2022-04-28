@@ -80,6 +80,30 @@ To install BenchmarkTools, please <a href="https://docs.julialang.org/en/v1/manu
 
 To know more about the BenchmarkTools, head to the <a href="https://github.com/JuliaCI/BenchmarkTools.jl"> BenchmarkTools Github </a> for more documentation.
 
+### Julia Unit Testing
+
+<p>
+Test is a <a href="https://julialang.org"> Julia Language </a> package. 
+To install Test, please <a href="https://docs.julialang.org/en/v1/manual/getting-started/">open Julia's interactive session (known as REPL)</a> and press <kbd>]</kbd> key in the REPL to use the package mode, then type the following command
+</p>
+
+    pkg> add Test
+
+The unit test performed confronts an expected value and the actual value to decide if they are the same within a certain range of error, in our case checks if the expected value and the value we get are identical with a maximum error of 1e-5.  
+To know more about the Test, head to the <a href="https://docs.julialang.org/en/v1/stdlib/Test/"> Unit Testing </a> for more documentation.
+
+### Julia Distributions
+
+<p>
+Distributions is a <a href="https://julialang.org"> Julia Language </a> package. 
+To install Distributions, please <a href="https://docs.julialang.org/en/v1/manual/getting-started/">open Julia's interactive session (known as REPL)</a> and press <kbd>]</kbd> key in the REPL to use the package mode, then type the following command
+</p>
+
+    pkg> add Distributions
+
+The Distributions package is used to generate data, matrices, to test the algorithm.  
+To know more about the Distributions, head to the <a href="https://github.com/JuliaStats/Distributions.jl"> Distributions GitHub </a> for more documentation.
+
 ### Build this repository 
 First, make sure you have all the required libraries installed. Then, clone this git repository:
 

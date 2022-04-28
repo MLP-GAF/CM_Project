@@ -22,22 +22,21 @@ struct SVDCM
 		shorter=min(r,c)
 		longer=max(r,c)
 
-		Asq = zeros(shorter,shorter) #fill(0., (shorter,shorter))
+		Asq = zeros(shorter,shorter) 
 		mul!(Asq, A', A)
 		a, V = eigen!(Asq)
 
-		S = sparse(zeros(longer,shorter))#fill(0., (longer,shorter)))
-		Sin = sparse(zeros(shorter,longer))#fill(0., (shorter,longer)))
+		S = sparse(zeros(longer,shorter))
+		Sin = sparse(zeros(shorter,longer))
 
 		S[diagind(S)] .= (sqrt.(a))
 		Sin[diagind(Sin)] .= 1 ./ S[diagind(S)]
 
-		U1 = zeros(r,c) #fill(0., (r,c))
-		U = zeros(longer,longer)#fill(0., (longer,longer))
+		U1 = zeros(r,c) 
+		U = zeros(longer,longer)
 
 		mul!(U1, A, V)
-		mul!(U,U1,Sin) #sostituire con una for
-		#mul!(U,(A*V),Sin)
+		mul!(U,U1,Sin) 
 		return U, S, V
 	end
 end
@@ -49,11 +48,11 @@ MM = [1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 0; 0 2 0 0 0; 1 0 0 0 2; 0 0 3 0 0; 0 0 0 0 
 
 C = R
 println("size of matrix: ", size(C) )
+
 println("Julia SVD time:")
 SVD = @time svd(C)
 
 println("SVD time:")
-#U, S, V =  @time svdCm(C)
 mySvd = @time SVDCM(C)
 
 F = mySvd.U * mySvd.S * mySvd.V'
