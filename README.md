@@ -149,7 +149,7 @@ If you have any problems to instal this repository or need any clarification on 
 
 |Author             |University Mail                    | Personal Mail             | Github                                                   |
 |-------------------|-----------------------------------|---------------------------|----------------------------------------------------------|
-| Giacomo Antonioli | g.antonioli3@studenti.unipi.it    |                           | <a href="https://github.com/Giacomo-Antonioli"> Giacomo Antonioli</a> |
+| Giacomo Antonioli | g.antonioli3@studenti.unipi.it    | giaco.antonioli@gmail.com | <a href="https://github.com/Giacomo-Antonioli"> Giacomo Antonioli</a> |
 | Paolo Fasano      | p.fasano1@studenti.unipi.it       | p.fasano99@hotmail.com    | <a href="https://github.com/PFasano99/">Paolo Fasano</a> |
 | Malio Li          | m.li6@studenti.unipi.it           |                           | <a href="https://github.com/xiaoli98">Malio Li</a>       |
 

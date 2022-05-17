@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+#name: CI
+#on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+#  push:
+ #   branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+    
+#  workflow_dispatch:
+    
+#jobs:
+#  build:
+
+ #   runs-on: ubuntu-latest
+    
+  #  steps:
+  #  - uses: actions/checkout@v1
+  #  - uses: julia-actions/setup-julia@v1
+  #    with:
+  #        version: '1.7'
+  #  - uses: julia-actions/julia-buildpkg@master
+  #  - name: xor test
+   #   run: julia --project ELM/test/runtests.jl 
+name: Run tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        julia-version: ['1.7']
+        julia-arch: [x64]
+        os: [ubuntu-latest]
+
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: ${{ matrix.julia-version }}
+          arch: ${{ matrix.julia-arch }}
+      - uses: julia-actions/julia-buildpkg@v1
+        with:
+         project: ELM
+      - uses: julia-actions/julia-runtest@v1
+        with:
+          project: ELM
