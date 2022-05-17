@@ -45,7 +45,7 @@ jobs:
           arch: ${{ matrix.julia-arch }}
       - uses: julia-actions/julia-buildpkg@v1
         with:
-          working-directory: ./ELM
+         project: ELM
       - uses: julia-actions/julia-runtest@v1
         with:
-          working-directory: ./ELM
+          project: ELM
