@@ -24,4 +24,4 @@ jobs:
     - name: import ELM
       run: import Pkg; Pkg.add("ELM")`
     - name: xor test
-    - run: julia --project ELM/test/runtests.jl 
+      run: julia --project ELM/test/runtests.jl 
