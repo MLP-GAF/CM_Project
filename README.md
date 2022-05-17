@@ -22,7 +22,7 @@ A full explanation of the mathematical content and decision making gone behind t
 
 The CM_Report will be structured as follow:
 
-<font size = 2>
+<font size = 1.2>
 
 1. Intro
 
@@ -57,7 +57,7 @@ The CM_Report will be structured as follow:
 5. Implementation
 6. Conclusions
 
-<font>
+</font>
 
 --- 
 # The project
