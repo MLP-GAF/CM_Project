@@ -21,4 +21,5 @@ jobs:
       with:
           version: '1.7'
     - uses: julia-actions/julia-buildpkg@master
-    - run: julia --project CM_Project/ELM/test/runtests.jl 
+    - name: xor test
+      run: julia ELM/test/runtests.jl 
