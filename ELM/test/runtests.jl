@@ -1,6 +1,6 @@
 using ELM
 
-tests = ["xor.jl"]
+tests = ["xor.jl","svd_test.jl"]
 				
 println("Running test:")
 
