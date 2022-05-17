@@ -21,6 +21,7 @@ jobs:
       with:
           version: '1.7'
     - uses: julia-actions/julia-buildpkg@master
+    - name: import ELM
+      run: import Pkg; Pkg.add("ELM")`
     - name: xor test
-    - run: import Pkg; Pkg.add("ELM")`
     - run: julia --project ELM/test/runtests.jl 
