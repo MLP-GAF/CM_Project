@@ -117,6 +117,18 @@ To install Distributions, please <a href="https://docs.julialang.org/en/v1/manua
 The Distributions package is used to generate data, matrices, to test the algorithm.  
 To know more about the Distributions, head to the <a href="https://github.com/JuliaStats/Distributions.jl"> Distributions GitHub </a> for more documentation.
 
+### Julia DataFrames
+
+DataFrames is a <a href="https://julialang.org"> Julia Language </a> package. 
+To install DataFrames, please <a href="https://docs.julialang.org/en/v1/manual/getting-started/">open Julia's interactive session (known as REPL)</a> and press <kbd>]</kbd> key in the REPL to use the package mode, then type the following command
+</p>
+
+    pkg> add DataFrames
+
+The DataFrames package is used to manage the data, similarly to  <a href="https://pandas.pydata.org/docs/">Pandas</a> in Python.  
+To know more about the DataFrames, head to the <a href="https://dataframes.juliadata.org/stable/"> DataFrames docs </a> for more documentation.
+
+
 ### Build this repository 
 First, make sure you have all the required libraries installed. Then, clone this git repository:
 
