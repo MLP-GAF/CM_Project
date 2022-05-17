@@ -21,3 +21,4 @@ jobs:
       with:
           version: '1.7'
     - uses: julia-actions/julia-buildpkg@master
+    - run: julia --project /ELM/src/test/runtests.jl 
